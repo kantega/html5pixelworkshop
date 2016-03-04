@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>King of Pop</title>
+    <script src="kingofpop.js"></script>
+    <link href="kingofpop.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h1>King of Pop</h1>
+
+<p>
+    Why not combine the King of Pop with the king of repositionable notes: Post-it?
+</p>
+
+<p>
+    Your goal is to:
+</p>
+<ul>
+    <li>Replace each pixel's green channel with the green channel of the pixel 20 pixels (that's 4*20 == 60 components) to the right</li>
+</ul>
+
+
+<video id="webcam" width="320" height="240" autoplay>
+
+</video>
+
+<video id="king" src="../videos/glove.mp4" loop="loop"></video>
+
+<canvas width="340" height="240">
+
+</canvas>
+
+<canvas id="buffercanvas" width="340" height="240">
+
+</canvas>
+<div id="error" class="error hide">
+    Error message
+</div>
+
+
+<p>
+    Target color: <span class="target"></span> <span class="targettext"></span>
+</p>
+
+
+</body>
+
+</html>
