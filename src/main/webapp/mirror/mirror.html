@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple video player</title>
-    <script src="simpleplayer.js"></script>
-    <link href="simpleplayer.css" rel="stylesheet" type="text/css">
+    <title>Mirror, mirror on the wall</title>
+    <script src="mirror.js"></script>
+    <link href="mirror.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
 <h1>Mirror, mirror on the screen</h1>
 
 <p>
-    Your goal in this task is to create a simple video player capable of:
+    In this task you will use the Canvas API to draw video frames from the &lt;video&gt; element into the
+    &lt;canvas&gt; 2D graphics context.
+</p>
+
+<p>
+    Your goal is to:
 </p>
 <ul>
-    <li>
-        Playing the video file <a href="/videos/video.mp4">/videos/video.mp4</a>
-    </li>
-    <li>
-        Playing and pausing via custom buttons
-    </li>
-    <li>
-        Showing the progress of the playing video
-    </li>
-    <li>
-        CSS: Make the play/pause buttons show a "hand" cursor on mouse over, to indicate they are clickable
-    </li>
-    <li>
-        Can you show the pause button only when the video is playing?
-    </li>
+    <li>Draw a snapshot of the video on the left into the Canvas on the right every time the user clicks pause</li>
+    <li>Then find a way to draw the live video into the Canvas. You need to draw the video on all frames</li>
+    <li>Google hint: <a href="http://lmgtfy.com/?q=requestAnimationFrame">requestAnimationFrame</a></li>
 </ul>
 
-<p>This HTML file is found in <code>src/main/webapp/simpleplayer/simpleplayer.html</code>
-You will also need to edit Javascript in <code>mirror.js</code> in the same folder and perhaps some
-    CSS in simpleplayer.css
+<p>
+    Click play and pause below a few times. What is happening? Can you find the code and change it so that it does the above?
 </p>
 
-<video src="/videos/video.mp4">
+<p>Sources for this task is found in <code>src/main/webapp/mirror</code></p>
+
+<video src="/videos/video.mp4" autoplay>
 
 </video>
+
+<canvas width="320" height="240">
+
+</canvas>
 
 
 <div class="progress">
