@@ -7,17 +7,20 @@ window.addEventListener("load", function() {
     var elapsed = document.querySelector("#elapsed");
 
     video.addEventListener("timeupdate", function() {
-        elapsed.style.width = Math.ceil(video.currentTime * 320 / video.duration) +"px";
+        var currentTime = video.currentTime;
+        var totalDuration = video.duration;
+
+        // TODO: Hmmm, how far are we really?
+        elapsed.style.marginLeft = 30 +"%";
     });
 
     playButton.addEventListener("click", function() {
-        video.play();
+        // TODO: How do we play the video?
     });
 
 
-    pauseButton.addEventListener("click", function() {
-        video.pause();
-    });
+    // TODO: Should add similar event listener for pauseButton
+
 
 
 });

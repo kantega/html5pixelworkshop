@@ -9,6 +9,15 @@ window.addEventListener("load", function() {
 
     var g = canvas.getContext("2d");
 
+    function drawSadPanda() {
+        drawPandaImage();
+
+        drawWhiteBackground();
+
+        drawMouth();
+
+        drawHat();
+    }
 
     function drawPandaImage() {
         g.drawImage(panda, 0, 0, canvas.width, canvas.height);
@@ -42,16 +51,7 @@ window.addEventListener("load", function() {
         g.stroke()
     }
 
-    function drawSadPanda() {
-        drawPandaImage();
 
-        drawWhiteBackground();
-
-        drawMouth();
-
-
-        drawHat();
-    }
 
 
 

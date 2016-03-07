@@ -7,6 +7,11 @@ canvas, video {
     cursor: pointer;
 }
 
+
+#king {
+    display:block;
+    float:right;
+}
 .error {
     background-color: lightcoral;
     border: 3px solid gray;

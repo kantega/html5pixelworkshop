@@ -18,21 +18,17 @@ window.addEventListener("load", function() {
 
     var g = canvas.getContext("2d");
 
-    window.navigator.mediaDevices.getUserMedia({ video:true, audio:false })
-        .then(getUserMediaSuccess)
-        .catch(userMediaFailed);
+    var constraints = { video:true, audio:false };
 
-
-    function getUserMediaSuccess(stream) {
-        video.src = window.URL.createObjectURL(stream);
-        video.play();
-    }
-
-    function userMediaFailed(err) {
-        error.innerHTML = "Failed to get user media: " + err.name + " " + err.message;
-        error.classList.remove("hide")
-    }
-
+    window.navigator.mediaDevices.getUserMedia(constraints)
+        .then(function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        })
+        .catch(function(err) {
+            error.innerHTML = "Failed to get user media: " + err.name + " " + err.message;
+            error.classList.remove("hide")
+        });
 
 
     function animationLoop() {
@@ -48,18 +44,18 @@ window.addEventListener("load", function() {
         // pixels is an array color components: [red, green, blue, alpha, red, green, blue, alpha, ..]
         // So, let's iterate over every 4th component:
 
-        var minx = canvas.width;
-        var miny = canvas.height;
-        var maxx = 0;
-        var maxy = 0;
+        var leftMost = canvas.width;
+        var topMost = canvas.height;
+        var rightMost = 0;
+        var bottomMost = 0;
 
-        var numx = [];
-        var numy = [];
 
         for(var i = 0; i < pixels.length; i+=4) {
 
+            // Pixel index
             var p = i / 4;
 
+            // Calculate X and Y positions
             var x = p % canvas.width;
             var y = Math.floor(p/canvas.width);
 
@@ -69,29 +65,31 @@ window.addEventListener("load", function() {
             var blue = pixels[i+ 2];
 
 
+            // Calculate the difference between actual and target color in 3D vector space
             var diff = Math.sqrt(Math.pow(targetColor.red - red, 2)
                 + Math.pow(targetColor.green - green, 2)
                 + Math.pow(targetColor.blue - blue, 2));
 
-            if(diff < 30) {
-                pixels[i] = 255;
-                pixels[i+1] = 0;
-                pixels[i+2] = 255;
-                minx = Math.min(minx, x);
-                miny = Math.min(miny, y);
-                maxx = Math.max(maxx, x)
-                maxy = Math.max(maxy, y)
-                numx[x] = numx[x] ? numx[x] + 1 : 1;
-                numx[y] = numy[y] ? numy[y] + 1 : 1;
+            // TODO: Find a better threshold to give a tighter match?
+            var threshold = 70;
+
+            if(diff < threshold) {
+                // TODO: Replace the pixel values to create a different color
+
+
+
+                // Update the leftmost, topmost, rightmost and bottommost locations
+                leftMost = Math.min(leftMost, x);
+                topMost = Math.min(topMost, y);
+                rightMost = Math.max(rightMost, x);
+                bottomMost = Math.max(bottomMost, y);
             }
         }
 
         g.putImageData(imageData, 0, 0);
 
 
-        g.beginPath()
-        g.rect(minx, miny, maxx-minx, maxy-miny);
-        g.stroke();
+        // TODO: Use leftMost, rightMost, topMost, bottomMost, to draw a bounding box around the Post-it
 
         window.requestAnimationFrame(animationLoop);
     }

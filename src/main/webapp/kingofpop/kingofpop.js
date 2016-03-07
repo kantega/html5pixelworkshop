@@ -9,6 +9,7 @@ window.addEventListener("load", function() {
     var canvas = document.querySelector("canvas");
     var bufferCanvas = document.querySelector("#buffercanvas");
 
+    // Is the video playing ?
     var playing = false;
 
     var error = document.querySelector(".error");
@@ -16,6 +17,59 @@ window.addEventListener("load", function() {
     var targetColor = {red: 0, green: 255, blue: 0};
     var targetColorDiv = document.querySelector(".target");
     var targetColorText = document.querySelector(".targettext");
+
+
+    function animationLoop() {
+
+        g.drawImage(webcam, 0, 0, canvas.width, canvas.height);
+        bg.drawImage(king, 0, 0, canvas.width, canvas.height);
+
+        var imageData = g.getImageData(0, 0, canvas.width, canvas.height);
+
+        var pixels = imageData.data;
+
+        var kingPixels = bg.getImageData(0, 0, canvas.width, canvas.height).data;
+
+
+        var numMatchingPixels = 0;
+
+        for(var i = 0; i < pixels.length; i+=4) {
+
+            // Get each color value (0-255)
+            var red = pixels[i];
+            var green = pixels[i+ 1];
+            var blue = pixels[i+ 2];
+
+
+            // Calculate the color difference
+            var diff = Math.sqrt(Math.pow(targetColor.red - red, 2)
+                + Math.pow(targetColor.green - green, 2)
+                + Math.pow(targetColor.blue - blue, 2));
+
+
+            // TODO: Replace matching pixels with corresponding pixels from kingPixels
+
+            // Count this pixel if matching
+            numMatchingPixels++;
+
+        }
+
+        g.putImageData(imageData, 0, 0);
+
+        if(numMatchingPixels > 1000) {
+            if(!playing) {
+                king.play();
+                playing = true;
+            }
+        } else {
+            // The post-it was removed
+           // TODO: If the video is playing, pause it
+
+        }
+
+        window.requestAnimationFrame(animationLoop);
+    }
+
 
     updateTargetColor(targetColor);
 
@@ -41,69 +95,6 @@ window.addEventListener("load", function() {
 
 
 
-    function animationLoop() {
-
-        g.drawImage(webcam, 0, 0, canvas.width, canvas.height);
-        bg.drawImage(king, 0, 0, canvas.width, canvas.height);
-
-        var imageData = g.getImageData(0, 0, canvas.width, canvas.height);
-
-        var pixels = imageData.data;
-
-        var kingPixels = bg.getImageData(0, 0, canvas.width, canvas.height).data;
-
-
-        var num = 0;
-
-        for(var i = 0; i < pixels.length; i+=4) {
-
-            var p = i / 4;
-
-            // Get each color value (0-255)
-            var red = pixels[i];
-            var green = pixels[i+ 1];
-            var blue = pixels[i+ 2];
-
-
-            var diff = Math.sqrt(Math.pow(targetColor.red - red, 2)
-                + Math.pow(targetColor.green - green, 2)
-                + Math.pow(targetColor.blue - blue, 2));
-
-            if(diff < 50) {
-                pixels[i+3] = 0;
-                num++;
-            }
-        }
-
-        if(num > 1000) {
-            if(!playing) {
-                king.play();
-                playing = true;
-            }
-
-            for(var i = 0; i < pixels.length; i+=4) {
-                if(pixels[i+3] == 0) {
-                    pixels[i] = kingPixels[i];
-                    pixels[i+1] = kingPixels[i+1];
-                    pixels[i+2] = kingPixels[i+2];
-                    pixels[i+3] = 255;
-                }
-            }
-            g.putImageData(imageData, 0, 0);
-        } else {
-            if(playing) {
-                king.pause();
-                playing = false;
-            }
-        }
-
-        window.requestAnimationFrame(animationLoop);
-    }
-
-
-    window.requestAnimationFrame(animationLoop);
-
-
 
     canvas.addEventListener("click", function(e) {
 
@@ -127,4 +118,7 @@ window.addEventListener("load", function() {
         targetColorDiv.style.backgroundColor = backgroundColor;
         targetColorText.textContent = backgroundColor;
     }
+
+    window.requestAnimationFrame(animationLoop);
+
 });

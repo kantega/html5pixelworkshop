@@ -51,4 +51,6 @@ window.addEventListener("load", function() {
     }
 
 
+    // TODO: Call drawSomething for every frame so the video plays smoothly
+
 });

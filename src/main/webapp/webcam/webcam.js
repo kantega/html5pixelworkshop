@@ -21,31 +21,39 @@ window.addEventListener("load", function() {
 
     var g = canvas.getContext("2d");
 
+
+    // See https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
     window.navigator.mediaDevices.getUserMedia({ video:true, audio:false })
-        .then(getUserMediaSuccess)
-        .catch(userMediaFailed);
+        .then(function(stream) {
+
+            // TODO: Attach the stream to the video, start playing
 
 
-    function getUserMediaSuccess(stream) {
-        video.src = window.URL.createObjectURL(stream);
-        video.play();
-    }
-
-    function userMediaFailed(err) {
-        error.innerHTML = "Failed to get user media: " + err.name + " " + err.message;
-        error.classList.remove("hide")
-    }
-
+        })
+        .catch(function(err) {
+            error.innerHTML = "Failed to get user media: " + err.name + " " + err.message;
+            error.classList.remove("hide")
+        });
 
 
     function animationLoop() {
+        // Clear the canvas
         g.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw the selfie stick image
         g.drawImage(stick, 0, 0, canvas.width, canvas.width);
         g.save()
+
+        // Translate, scale and rotate the graphics context
+        // TODO: Change this to draw on the phone's screen
         g.translate(canvas.width*2/3, canvas.height/4);
         g.scale(0.3, 0.3);
         g.rotate(-Math.PI/10);
+
+        // Draw the video onto the canvas
         g.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Draw a rect outlining the video
         g.strokeStyle = "darkmagenta";
         g.strokeWidth = 3;
         g.rect(0, 0, canvas.width, canvas.height);

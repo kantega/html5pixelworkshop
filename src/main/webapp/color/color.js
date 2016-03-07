@@ -12,20 +12,6 @@ window.addEventListener("load", function() {
 
     var g = canvas.getContext("2d");
 
-    window.navigator.mediaDevices.getUserMedia({ video:true, audio:false })
-        .then(getUserMediaSuccess)
-        .catch(userMediaFailed);
-
-
-    function getUserMediaSuccess(stream) {
-        video.src = window.URL.createObjectURL(stream);
-        video.play();
-    }
-
-    function userMediaFailed(err) {
-        error.innerHTML = "Failed to get user media: " + err.name + " " + err.message;
-        error.classList.remove("hide")
-    }
 
 
 
@@ -43,47 +29,45 @@ window.addEventListener("load", function() {
 
             // Get each color value (0-255)
             var red = pixelColors[i];
-            var green = pixelColors[i+ 1];
-            var blue = pixelColors[i+ 2];
+            var green = pixelColors[i + 1];
+            var blue = pixelColors[i + 2];
 
 
-            // Calculate the average color value
+            // Calculate the average value  of the color components
             var avg = (red + green + blue) / 3;
 
 
-            if(false) {
-                var y = Math.floor(i / 4 / canvas.width);
 
-                if( Math.floor(y / canvas.height*5) % 2 == 0) {
-                    // Set each color to the average ("black & white")
-                    pixelColors[i] = avg;
-                    pixelColors[i + 1] = avg;
-                    pixelColors[i + 2] = avg;
-                } else {
-                    pixelColors[i] = red;
-                    pixelColors[i + 1] = 0;
-                    pixelColors[i + 2] = 0;
-                }
-            } else if(false) {
-                pixelColors[i + 1] = pixelColors[i + (4*20) +1];
-            } else {
-                var y = Math.floor(i / 4 / canvas.width);
-                var x = (i/4) % canvas.width;
+            // Make every second (of 5) stripe black / white
+            // TODO: Replace below with your solution!
+            var y = Math.floor(i / 4 / canvas.width);
 
-                if(y > canvas.height / 2) {
-
-                    var row = canvas.height/2 - (y - canvas.height/2);
-                    var offset = 4* (canvas.width*row + x);
-                    pixelColors[i] = pixelColors[offset];
-                    pixelColors[i+1] = pixelColors[offset+1];
-                    pixelColors[i+2] = pixelColors[offset+2];
-                }
-
+            if( Math.floor(y / canvas.height * 5) % 2 == 0) {
+                // Set each color to the average ("black & white")
+                pixelColors[i] = avg;
+                pixelColors[i + 1] = avg;
+                pixelColors[i + 2] = avg;
             }
         }
         g.putImageData(imageData, 0, 0);
 
         window.requestAnimationFrame(animationLoop);
+    }
+
+
+    window.navigator.mediaDevices.getUserMedia({ video:true, audio:false })
+        .then(getUserMediaSuccess)
+        .catch(userMediaFailed);
+
+
+    function getUserMediaSuccess(stream) {
+        video.src = window.URL.createObjectURL(stream);
+        video.play();
+    }
+
+    function userMediaFailed(err) {
+        error.innerHTML = "Failed to get user media: " + err.name + " " + err.message;
+        error.classList.remove("hide")
     }
 
 

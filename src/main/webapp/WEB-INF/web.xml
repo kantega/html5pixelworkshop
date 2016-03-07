@@ -13,7 +13,7 @@
         </init-param>
         <load-on-startup>0</load-on-startup>
     </servlet>
-
+    ππ
     <filter>
         <filter-name>Decorator</filter-name>
         <filter-class>no.kantega.labs.html5pixel.PixelDecoratorFilter</filter-class>
