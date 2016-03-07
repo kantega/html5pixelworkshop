@@ -2,9 +2,8 @@
 
 ## Requirements ##
 
-* Java 8
+* You'll need to have [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) installed
 
-http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 ## Getting Started ##
 
@@ -16,18 +15,22 @@ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.h
 
         https://github.com/kantega/html5pixelworkshop.git
 
-* Download [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
-* Set System Variable JAVA_HOME to install location of JDK.
+* Make sure the Environment Variable JAVA_HOME points the location of your Java/JDK.
 
 ## Starting workshop ##
 
 
 1. Run:
 
-        mvnw(.bat) clean install
-        mvnw(.bat) -f webapp/pom.xml jetty:run
+Windows:
 
-2. Open up your favorite browser to [http://localhost:8080/](http://localhost:8080/).
+        mvnw.cmd jetty:run
+
+OS X / Linux:
+
+        mvnw jetty:run
+
+2. Open Chrome and go to [http://localhost:8080/](http://localhost:8080/).
 
 
 3. Start solving the tasks!
