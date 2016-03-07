@@ -13,7 +13,7 @@
 
 * If you don't have Git, you can download the workshop as a ZIP file:
 
-        https://github.com/kantega/html5pixelworkshop.git
+        https://github.com/kantega/html5pixelworkshop/archive/master.zip
 
 * Make sure the Environment Variable JAVA_HOME points the location of your Java/JDK.
 
