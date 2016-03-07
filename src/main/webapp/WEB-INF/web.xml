@@ -4,6 +4,16 @@
 	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
+    <servlet>
+        <servlet-name>Default</servlet-name>
+        <servlet-class>org.eclipse.jetty.servlet.DefaultServlet</servlet-class>
+        <init-param>
+            <param-name>useFileMappedBuffer</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
     <filter>
         <filter-name>Decorator</filter-name>
         <filter-class>no.kantega.labs.html5pixel.PixelDecoratorFilter</filter-class>
