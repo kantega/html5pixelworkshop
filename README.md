@@ -24,11 +24,11 @@
 
 Windows:
 
-        mvnw.cmd jetty:run
+        mvnw jetty:run
 
 OS X / Linux:
 
-        mvnw jetty:run
+        ./mvnw jetty:run
 
 2. Open Chrome and go to [http://localhost:8080/](http://localhost:8080/).
 
