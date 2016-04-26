@@ -15,7 +15,7 @@
 
         https://github.com/kantega/html5pixelworkshop/archive/master.zip
 
-* Make sure the Environment Variable JAVA_HOME points the location of your Java/JDK.
+* [Make sure the Environment Variable JAVA_HOME points the location of your Java/JDK](java.md).
 
 ## Starting workshop ##
 
