@@ -1,5 +1,4 @@
-
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
 
     // See overview of <video> events and properties:
     // https://www.w3.org/2010/05/video/mediaevents.html
@@ -13,8 +12,6 @@ window.addEventListener("load", function() {
     var g = canvas.getContext("2d");
 
 
-
-
     function animationLoop() {
 
         g.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -25,7 +22,7 @@ window.addEventListener("load", function() {
         // pixelColors is an array color components: [red, green, blue, alpha, red, green, blue, alpha, ..]
         // So, let's iterate over every 4th component:
 
-        for(var i = 0; i < pixelColors.length; i+=4) {
+        for (var i = 0; i < pixelColors.length; i += 4) {
 
             // Get each color value (0-255)
             var red = pixelColors[i];
@@ -37,12 +34,11 @@ window.addEventListener("load", function() {
             var avg = (red + green + blue) / 3;
 
 
-
             // Make every second (of 5) stripe black / white
             // TODO: Replace below with your solution!
             var y = Math.floor(i / 4 / canvas.width);
 
-            if( Math.floor(y / canvas.height * 5) % 2 == 0) {
+            if (Math.floor(y / canvas.height * 5) % 2 == 0) {
                 // Set each color to the average ("black & white")
                 pixelColors[i] = avg;
                 pixelColors[i + 1] = avg;
@@ -55,7 +51,7 @@ window.addEventListener("load", function() {
     }
 
 
-    window.navigator.mediaDevices.getUserMedia({ video:true, audio:false })
+    window.navigator.mediaDevices.getUserMedia({video: true, audio: false})
         .then(getUserMediaSuccess)
         .catch(userMediaFailed);
 

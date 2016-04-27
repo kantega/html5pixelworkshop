@@ -5,7 +5,6 @@ video {
     cursor: pointer;
 }
 
-
 canvas, video {
     border: 1px solid cornflowerblue;
 }
@@ -18,7 +17,7 @@ canvas, video {
 }
 
 .hide {
-    display:none
+    display: none
 }
 
 .target {

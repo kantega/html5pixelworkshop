@@ -1,5 +1,4 @@
-
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
 
     // See overview of <video> events and properties:
     // https://www.w3.org/2010/05/video/mediaevents.html
@@ -35,24 +34,21 @@ window.addEventListener("load", function() {
 
         g.lineWidth = 2
         g.beginPath()
-        g.arc(255, 195, 20, 1.1*Math.PI, 1.8 * Math.PI)
+        g.arc(255, 195, 20, 1.1 * Math.PI, 1.8 * Math.PI)
         g.stroke()
     }
 
 
     function drawHat() {
-        g.fillStyle=  "yellow"
+        g.fillStyle = "yellow"
         g.beginPath();
-        g.moveTo(100,100);
-        g.lineTo(0,50);
-        g.lineTo(100,0);
+        g.moveTo(100, 100);
+        g.lineTo(0, 50);
+        g.lineTo(100, 0);
         g.fill();
         g.strokeStyle = "green"
         g.stroke()
     }
-
-
-
 
 
     drawSadPanda();

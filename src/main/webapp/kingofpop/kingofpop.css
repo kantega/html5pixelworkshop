@@ -1,5 +1,5 @@
 video, #buffercanvas {
-    display:none;
+    display: none;
 }
 
 canvas, video {
@@ -7,11 +7,11 @@ canvas, video {
     cursor: pointer;
 }
 
-
 #king {
-    display:block;
-    float:right;
+    display: block;
+    float: right;
 }
+
 .error {
     background-color: lightcoral;
     border: 3px solid gray;
@@ -20,7 +20,7 @@ canvas, video {
 }
 
 .hide {
-    display:none
+    display: none
 }
 
 .target {

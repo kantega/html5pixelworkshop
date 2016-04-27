@@ -4,7 +4,6 @@ video {
     float: left;
 }
 
-
 canvas, video {
     border: 1px solid darkgreen;
 }
@@ -21,7 +20,6 @@ canvas, video {
     background-color: lightcoral;
 }
 
-
 .controls img:hover {
     cursor: pointer;
 }
@@ -30,6 +28,6 @@ canvas, video {
     display: none;
 }
 
-.controls.paused #pause{
+.controls.paused #pause {
     display: none;
 }

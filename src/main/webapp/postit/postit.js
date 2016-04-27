@@ -1,5 +1,4 @@
-
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
 
     // See overview of <video> events and properties:
     // https://www.w3.org/2010/05/video/mediaevents.html
@@ -18,14 +17,14 @@ window.addEventListener("load", function() {
 
     var g = canvas.getContext("2d");
 
-    var constraints = { video:true, audio:false };
+    var constraints = {video: true, audio: false};
 
     window.navigator.mediaDevices.getUserMedia(constraints)
-        .then(function(stream) {
+        .then(function (stream) {
             video.src = window.URL.createObjectURL(stream);
             video.play();
         })
-        .catch(function(err) {
+        .catch(function (err) {
             error.innerHTML = "Failed to get user media: " + err.name + " " + err.message;
             error.classList.remove("hide")
         });
@@ -50,19 +49,19 @@ window.addEventListener("load", function() {
         var bottomMost = 0;
 
 
-        for(var i = 0; i < pixels.length; i+=4) {
+        for (var i = 0; i < pixels.length; i += 4) {
 
             // Pixel index
             var p = i / 4;
 
             // Calculate X and Y positions
             var x = p % canvas.width;
-            var y = Math.floor(p/canvas.width);
+            var y = Math.floor(p / canvas.width);
 
             // Get each color value (0-255)
             var red = pixels[i];
-            var green = pixels[i+ 1];
-            var blue = pixels[i+ 2];
+            var green = pixels[i + 1];
+            var blue = pixels[i + 2];
 
 
             // Calculate the difference between actual and target color in 3D vector space
@@ -73,9 +72,8 @@ window.addEventListener("load", function() {
             // TODO: Find a better threshold to give a tighter match?
             var threshold = 70;
 
-            if(diff < threshold) {
+            if (diff < threshold) {
                 // TODO: Replace the pixel values to create a different color
-
 
 
                 // Update the leftmost, topmost, rightmost and bottommost locations
@@ -98,8 +96,7 @@ window.addEventListener("load", function() {
     window.requestAnimationFrame(animationLoop);
 
 
-
-    video.addEventListener("click", function(e) {
+    video.addEventListener("click", function (e) {
 
 
         var x = e.layerX;
@@ -117,7 +114,7 @@ window.addEventListener("load", function() {
 
     function updateTargetColor(col) {
         targetColor = col;
-        var backgroundColor = "rgba(" + col.red +", " + col.green +", " + col.blue +", 255)";
+        var backgroundColor = "rgba(" + col.red + ", " + col.green + ", " + col.blue + ", 255)";
         targetColorDiv.style.backgroundColor = backgroundColor;
         targetColorText.textContent = backgroundColor;
     }

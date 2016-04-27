@@ -1,5 +1,4 @@
-
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
 
     // See overview of <video> events and properties:
     // https://www.w3.org/2010/05/video/mediaevents.html
@@ -33,12 +32,12 @@ window.addEventListener("load", function() {
 
         var numMatchingPixels = 0;
 
-        for(var i = 0; i < pixels.length; i+=4) {
+        for (var i = 0; i < pixels.length; i += 4) {
 
             // Get each color value (0-255)
             var red = pixels[i];
-            var green = pixels[i+ 1];
-            var blue = pixels[i+ 2];
+            var green = pixels[i + 1];
+            var blue = pixels[i + 2];
 
 
             // Calculate the color difference
@@ -56,14 +55,14 @@ window.addEventListener("load", function() {
 
         g.putImageData(imageData, 0, 0);
 
-        if(numMatchingPixels > 1000) {
-            if(!playing) {
+        if (numMatchingPixels > 1000) {
+            if (!playing) {
                 king.play();
                 playing = true;
             }
         } else {
             // The post-it was removed
-           // TODO: If the video is playing, pause it
+            // TODO: If the video is playing, pause it
 
         }
 
@@ -78,7 +77,7 @@ window.addEventListener("load", function() {
 
     var bg = bufferCanvas.getContext("2d");
 
-    window.navigator.mediaDevices.getUserMedia({ video:true, audio:false })
+    window.navigator.mediaDevices.getUserMedia({video: true, audio: false})
         .then(getUserMediaSuccess)
         .catch(userMediaFailed);
 
@@ -94,9 +93,7 @@ window.addEventListener("load", function() {
     }
 
 
-
-
-    canvas.addEventListener("click", function(e) {
+    canvas.addEventListener("click", function (e) {
 
 
         var x = e.layerX;
@@ -114,7 +111,7 @@ window.addEventListener("load", function() {
 
     function updateTargetColor(col) {
         targetColor = col;
-        var backgroundColor = "rgba(" + col.red +", " + col.green +", " + col.blue +", 255)";
+        var backgroundColor = "rgba(" + col.red + ", " + col.green + ", " + col.blue + ", 255)";
         targetColorDiv.style.backgroundColor = backgroundColor;
         targetColorText.textContent = backgroundColor;
     }

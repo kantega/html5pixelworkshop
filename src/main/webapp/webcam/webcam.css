@@ -6,7 +6,6 @@ video {
     height: 240px;
 }
 
-
 canvas, video {
     border: 1px solid cornflowerblue;
 }
@@ -14,6 +13,7 @@ canvas, video {
 canvas {
     cursor: pointer;
 }
+
 .error {
     background-color: lightcoral;
     border: 3px solid gray;
@@ -22,7 +22,7 @@ canvas {
 }
 
 .hide {
-    display:none
+    display: none
 }
 
 #snapshots img {

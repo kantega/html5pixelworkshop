@@ -3,7 +3,6 @@ video {
     margin: 0px;
 }
 
-
 .progress {
     width: 320px;
     height: 20px;
@@ -15,7 +14,6 @@ video {
     height: 100%;
     background-color: lightcoral;
 }
-
 
 .controls img:hover {
     /* Show the "pointer" cursor */

@@ -1,5 +1,4 @@
-
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
 
     // See overview of <video> events and properties:
     // https://www.w3.org/2010/05/video/mediaevents.html
@@ -7,7 +6,7 @@ window.addEventListener("load", function() {
     var video = document.querySelector("video");
     var canvas = document.querySelector("canvas");
 
-    var controls= document.querySelector(".controls");
+    var controls = document.querySelector(".controls");
     var playButton = document.querySelector("#play");
     var pauseButton = document.querySelector("#pause");
 
@@ -16,10 +15,10 @@ window.addEventListener("load", function() {
 
     var g = canvas.getContext("2d");
 
-    video.addEventListener("timeupdate", function() {
-        elapsed.style.width = Math.ceil(video.currentTime * 320 / video.duration) +"px";
+    video.addEventListener("timeupdate", function () {
+        elapsed.style.width = Math.ceil(video.currentTime * 320 / video.duration) + "px";
     });
-    
+
     video.addEventListener("play", function () {
         controls.classList.add("playing");
         controls.classList.remove("paused");
@@ -30,13 +29,13 @@ window.addEventListener("load", function() {
         controls.classList.add("paused");
     });
 
-    playButton.addEventListener("click", function() {
+    playButton.addEventListener("click", function () {
         video.play();
         drawSomething(playButton);
     });
 
 
-    pauseButton.addEventListener("click", function() {
+    pauseButton.addEventListener("click", function () {
         video.pause();
         drawSomething(pauseButton);
     });
