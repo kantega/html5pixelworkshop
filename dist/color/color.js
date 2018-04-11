@@ -29,21 +29,7 @@ window.addEventListener("load", function () {
             var green = pixelColors[i + 1];
             var blue = pixelColors[i + 2];
 
-
-            // Calculate the average value  of the color components
-            var avg = (red + green + blue) / 3;
-
-
-            // Make every second (of 5) stripe black / white
-            // TODO: Replace below with your solution!
-            var y = Math.floor(i / 4 / canvas.width);
-
-            if (Math.floor(y / canvas.height * 5) % 2 == 0) {
-                // Set each color to the average ("black & white")
-                pixelColors[i] = avg;
-                pixelColors[i + 1] = avg;
-                pixelColors[i + 2] = avg;
-            }
+            // TODO: insert your solution here!
         }
         g.putImageData(imageData, 0, 0);
 
