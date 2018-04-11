@@ -1,36 +1,42 @@
 # HTML5 Pixel Magic Workshop #
 
+
 ## Requirements ##
 
-* You'll need to have [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) installed
+You need to be able to start a minimal web server. 
+For example, you can use Python's built-in web server module.
+If you're on OS X or Linux, you should probably have Python
+installed already. If you are on Windows, you can 
+[download Python here](https://www.python.org/downloads/).
 
 
 ## Getting Started ##
 
-* Git clone the workshop:
+You can download the workshop files from https://github.com/kantega/html5pixelworkshop/archive/master.zip
 
-        git clone https://github.com/kantega/html5pixelworkshop.git
+Or, you can use Git to clone the workshop files, by issuing:
 
-* If you don't have Git, you can download the workshop as a ZIP file:
+    git clone https://github.com/kantega/html5pixelworkshop.git
 
-        https://github.com/kantega/html5pixelworkshop/archive/master.zip
 
-* [Make sure the Environment Variable JAVA_HOME points the location of your Java/JDK](java.md).
-
-## Starting workshop ##
-
+## Starting the workshop, using Python 3 ##
 
 1. Run:
+        cd dist
+        python3 -m simple.http
 
-Windows:
+2. Open your browser and navigate to [http://localhost:8000/](http://localhost:8000/).
 
-        mvnw jetty:run
 
-OS X / Linux:
+3. Start solving the tasks!
 
-        ./mvnw jetty:run
 
-2. Open Chrome and go to [http://localhost:8080/](http://localhost:8080/).
+## Starting the workshop, using Python 2 ##
 
+1. Run:
+        cd dist
+        python -m SimpleHTTPServer
+
+2. Open your browser and navigate to [http://localhost:8000/](http://localhost:8000/).
 
 3. Start solving the tasks!
