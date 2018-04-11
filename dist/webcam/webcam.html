@@ -30,6 +30,9 @@
     <script src="webcam.js"></script>
     <link href="webcam.css" rel="stylesheet" type="text/css">
 
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 
 </head>
 <body>
@@ -76,9 +79,7 @@
 <p>
     In this task you will use the
     <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">getUserMedia API</a>
-    to connect your laptop's webcam to a video element. If you are using Chrome you have to enable the flag
-    <a>chrome://flags/#enable-experimental-web-platform-features</a> to turn on the API.
-
+    to connect your laptop's webcam to a video element. 
 </p>
 
 <p>
@@ -86,10 +87,15 @@
 </p>
 <ul>
     <li>Use the getUserMedia function to request a video stream from your webcam</li>
-    <li>In the success function: Use URL.createObjectURL to create a URL from the stream</li>
-    <li>Set the video's <code>src</code> attribute to this URL</li>
-    <li>Again, <a href="http://lmgtfy.com/?q=getUserMedia mediaDevices examples">Google is your friend</a></li>
+    <li>Set the video's <code>srcObject</code> property to the stream returned
+        in the success callback from <code>getUserMedia</code>.</li>
+    <li>Set the video's <code>onloadedmetadata</code> property to a function
+        that calls <code>video.play()</code>.
 </ul>
+<p>
+    If you get stuck, there's a nice example far down on the MDN webpage 
+    linked to above.
+</p>
 
 <p>
     Once you've got your video connected, you can:
