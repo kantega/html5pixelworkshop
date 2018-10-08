@@ -15,6 +15,12 @@ video {
     background-color: lightcoral;
 }
 
-.controls img:hover {
-    /* Show the "pointer" cursor */
+button {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+}
+
+button:hover {
+    /* Add style here */
 }
