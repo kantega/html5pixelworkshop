@@ -43,7 +43,7 @@ window.addEventListener("load", function () {
 
 
     function getUserMediaSuccess(stream) {
-        video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
         video.play();
     }
 
