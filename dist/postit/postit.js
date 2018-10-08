@@ -21,7 +21,7 @@ window.addEventListener("load", function () {
 
     window.navigator.mediaDevices.getUserMedia(constraints)
         .then(function (stream) {
-            video.src = window.URL.createObjectURL(stream);
+            video.srcObject = stream;
             video.play();
         })
         .catch(function (err) {

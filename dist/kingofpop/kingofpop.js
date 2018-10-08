@@ -83,7 +83,7 @@ window.addEventListener("load", function () {
 
 
     function getUserMediaSuccess(stream) {
-        webcam.src = window.URL.createObjectURL(stream);
+        webcam.srcObject = stream;
         webcam.play();
     }
 
