@@ -25,14 +25,13 @@
 
     <script type="text/javascript" src="/assets/html5pixelmagic.js"></script>
 
-    
-    
+
     <script src="webcam.js"></script>
     <link href="webcam.css" rel="stylesheet" type="text/css">
 
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
 
 </head>
 <body>
@@ -56,7 +55,8 @@
                                         <a title="Workshop" href="/">Tasks</a>
                                     </li>
                                     <li>
-                                        <a title="Om Kantega" target="_blank" href="http://kantega.no/jobb/">About Kantega</a>
+                                        <a title="Om Kantega" target="_blank" href="http://kantega.no/jobb/">About
+                                            Kantega</a>
                                     </li>
                                 </ul>
                             </div>
@@ -72,52 +72,55 @@
             <div class="articleLayout">
                 <div class="content">
 
-                    
 
-<h1>Webcam selfie stick</h1>
+                    <h1>Webcam selfie stick</h1>
 
-<p>
-    In this task you will use the
-    <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">getUserMedia API</a>
-    to connect your laptop's webcam to a video element. 
-</p>
+                    <p>
+                        In this task you will use the
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">getUserMedia
+                            API</a>
+                        to connect your laptop's webcam to a video element.
+                    </p>
 
-<p>
-    Your goal is to:
-</p>
-<ul>
-    <li>Use the getUserMedia function to request a video stream from your webcam</li>
-    <li>Set the video's <code>srcObject</code> property to the stream returned
-        in the success callback from <code>getUserMedia</code>.</li>
-    <li>Set the video's <code>onloadedmetadata</code> property to a function
-        that calls <code>video.play()</code>.
-</ul>
-<p>
-    If you get stuck, there's a nice example far down on the MDN webpage 
-    linked to above.
-</p>
+                    <p>
+                        Your goal is to:
+                    </p>
+                    <ul>
+                        <li>Use the getUserMedia function to request a video stream from your webcam</li>
+                        <li>Set the video's <code>srcObject</code> property to the stream returned
+                            in the success callback from <code>getUserMedia</code>.
+                        </li>
+                        <li>Set the video's <code>onloadedmetadata</code> property to a function
+                            that calls <code>video.play()</code>.
+                    </ul>
+                    <p>
+                        If you get stuck, there's a nice example far down on the MDN webpage
+                        linked to above.
+                    </p>
 
-<p>
-    Once you've got your video connected, you can:
-</p>
+                    <p>
+                        Once you've got your video connected, you can:
+                    </p>
 
-<p>
-<ul>
-    <li>Change the function <code>animationLoop</code> such that your video will play on the phone's screen</li>
-</ul>
-</p>
-<video width="640" height="480" autoplay>
+                    <p>
+                    <ul>
+                        <li>Change the function <code>animationLoop</code> such that your video will play on the phone's
+                            screen
+                        </li>
+                    </ul>
+                    </p>
+                    <video width="640" height="480" autoplay>
 
-</video>
+                    </video>
 
-<canvas width="640" height="480">
+                    <canvas width="640" height="480">
 
-</canvas>
-<div id="error" class="error hide">
-    Error message
-</div>
+                    </canvas>
+                    <div id="error" class="error hide">
+                        Error message
+                    </div>
 
-<div id="snapshots"></div>
+                    <div id="snapshots"></div>
 
 
                 </div>
