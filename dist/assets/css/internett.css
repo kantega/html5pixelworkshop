@@ -122,7 +122,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
     -webkit-appearance: button;
-    cursor: pointer
 }
 
 input[type="search"] {
