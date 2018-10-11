@@ -1,5 +1,8 @@
 window.addEventListener("load", function () {
 
+    // See overview of <video> events and properties:
+    // https://www.w3.org/2010/05/video/mediaevents.html
+
     var video = document.querySelector("video");
     var playButton = document.querySelector("#play");
     var pauseButton = document.querySelector("#pause");

@@ -92,16 +92,20 @@ window.addEventListener("load", function () {
         error.classList.remove("hide")
     }
 
+    function getCursorPosition(canvasElement, event) {
+        var rect = canvasElement.getBoundingClientRect();
+        var xPos = event.clientX - rect.left;
+        var yPos = event.clientY - rect.top;
+        return {x: xPos, y: yPos};
+    }
 
     canvas.addEventListener("click", function (e) {
 
-
-        var x = e.layerX;
-        var y = e.layerY;
+        var pos = getCursorPosition(canvas, e);
 
         g.drawImage(webcam, 0, 0, canvas.width, canvas.height);
 
-        var imageData = g.getImageData(x, y, 1, 1);
+        var imageData = g.getImageData(pos.x, pos.y, 1, 1);
 
         var pixels = imageData.data;
 

@@ -1,8 +1,5 @@
 window.addEventListener("load", function () {
 
-    // See overview of <video> events and properties:
-    // https://www.w3.org/2010/05/video/mediaevents.html
-
     var canvas = document.querySelector("canvas");
     var panda = document.querySelector("#panda");
 
