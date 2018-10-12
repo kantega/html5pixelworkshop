@@ -1,9 +1,9 @@
 window.addEventListener("load", function () {
 
-    var canvas = document.querySelector("canvas");
-    var panda = document.querySelector("#panda");
+    const canvas = document.querySelector("canvas");
+    const panda = document.querySelector("#panda");
 
-    var g = canvas.getContext("2d");
+    const g = canvas.getContext("2d");
 
     function drawSadPanda() {
         drawPandaImage();

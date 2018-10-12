@@ -17,10 +17,11 @@ video {
 
 button {
     background-color: transparent;
-    border: 0;
+    border: none;
     padding: 0;
 }
 
 button:hover {
     /* Add style here */
+    background-color: red;
 }

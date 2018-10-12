@@ -3,19 +3,19 @@ window.addEventListener("load", function () {
     // See overview of <video> events and properties:
     // https://www.w3.org/2010/05/video/mediaevents.html
 
-    var webcam = document.querySelector("#webcam");
-    var king = document.querySelector("#king");
-    var canvas = document.querySelector("canvas");
-    var bufferCanvas = document.querySelector("#buffercanvas");
+    const webcam = document.querySelector("#webcam");
+    const king = document.querySelector("#king");
+    const canvas = document.querySelector("canvas");
+    const bufferCanvas = document.querySelector("#buffercanvas");
 
     // Is the video playing ?
-    var playing = false;
+    let playing = false;
 
-    var error = document.querySelector(".error");
+    const error = document.querySelector(".error");
 
-    var targetColor = {red: 0, green: 255, blue: 0};
-    var targetColorDiv = document.querySelector(".target");
-    var targetColorText = document.querySelector(".targettext");
+    let targetColor = {red: 0, green: 255, blue: 0};
+    const targetColorDiv = document.querySelector(".target");
+    const targetColorText = document.querySelector(".targettext");
 
 
     function animationLoop() {
@@ -23,25 +23,25 @@ window.addEventListener("load", function () {
         g.drawImage(webcam, 0, 0, canvas.width, canvas.height);
         bg.drawImage(king, 0, 0, canvas.width, canvas.height);
 
-        var imageData = g.getImageData(0, 0, canvas.width, canvas.height);
+        const imageData = g.getImageData(0, 0, canvas.width, canvas.height);
 
-        var pixels = imageData.data;
+        const pixels = imageData.data;
 
-        var kingPixels = bg.getImageData(0, 0, canvas.width, canvas.height).data;
+        const kingPixels = bg.getImageData(0, 0, canvas.width, canvas.height).data;
 
 
-        var numMatchingPixels = 0;
+        let numMatchingPixels = 0;
 
-        for (var i = 0; i < pixels.length; i += 4) {
+        for (let i = 0; i < pixels.length; i += 4) {
 
             // Get each color value (0-255)
-            var red = pixels[i];
-            var green = pixels[i + 1];
-            var blue = pixels[i + 2];
+            const red = pixels[i];
+            const green = pixels[i + 1];
+            const blue = pixels[i + 2];
 
 
             // Calculate the color difference
-            var diff = Math.sqrt(Math.pow(targetColor.red - red, 2)
+            const diff = Math.sqrt(Math.pow(targetColor.red - red, 2)
                 + Math.pow(targetColor.green - green, 2)
                 + Math.pow(targetColor.blue - blue, 2));
 
@@ -73,9 +73,9 @@ window.addEventListener("load", function () {
     updateTargetColor(targetColor);
 
 
-    var g = canvas.getContext("2d");
+    const g = canvas.getContext("2d");
 
-    var bg = bufferCanvas.getContext("2d");
+    const bg = bufferCanvas.getContext("2d");
 
     window.navigator.mediaDevices.getUserMedia({video: true, audio: false})
         .then(getUserMediaSuccess)
@@ -93,21 +93,21 @@ window.addEventListener("load", function () {
     }
 
     function getCursorPosition(canvasElement, event) {
-        var rect = canvasElement.getBoundingClientRect();
-        var xPos = event.clientX - rect.left;
-        var yPos = event.clientY - rect.top;
+        const rect = canvasElement.getBoundingClientRect();
+        const xPos = event.clientX - rect.left;
+        const yPos = event.clientY - rect.top;
         return {x: xPos, y: yPos};
     }
 
     canvas.addEventListener("click", function (e) {
 
-        var pos = getCursorPosition(canvas, e);
+        const pos = getCursorPosition(canvas, e);
 
         g.drawImage(webcam, 0, 0, canvas.width, canvas.height);
 
-        var imageData = g.getImageData(pos.x, pos.y, 1, 1);
+        const imageData = g.getImageData(pos.x, pos.y, 1, 1);
 
-        var pixels = imageData.data;
+        const pixels = imageData.data;
 
         updateTargetColor({red: pixels[0], green: pixels[1], blue: pixels[2]});
 
@@ -115,7 +115,7 @@ window.addEventListener("load", function () {
 
     function updateTargetColor(col) {
         targetColor = col;
-        var backgroundColor = "rgba(" + col.red + ", " + col.green + ", " + col.blue + ", 255)";
+        const backgroundColor = "rgba(" + col.red + ", " + col.green + ", " + col.blue + ", 255)";
         targetColorDiv.style.backgroundColor = backgroundColor;
         targetColorText.textContent = backgroundColor;
     }
