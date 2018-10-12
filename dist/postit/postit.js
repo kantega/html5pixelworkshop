@@ -96,9 +96,9 @@ window.addEventListener("load", function () {
     window.requestAnimationFrame(animationLoop);
 
     function getCursorPosition(canvasElement, event) {
-        var rect = canvasElement.getBoundingClientRect();
-        var xPos = event.clientX - rect.left;
-        var yPos = event.clientY - rect.top;
+        const rect = canvasElement.getBoundingClientRect();
+        const xPos = event.clientX - rect.left;
+        const yPos = event.clientY - rect.top;
         return {x: xPos, y: yPos};
     }
 
