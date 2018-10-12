@@ -3,17 +3,17 @@ window.addEventListener("load", function () {
     // See overview of <video> events and properties:
     // https://www.w3.org/2010/05/video/mediaevents.html
 
-    var video = document.querySelector("video");
-    var canvas = document.querySelector("canvas");
+    const video = document.querySelector("video");
+    const canvas = document.querySelector("canvas");
 
-    var controls = document.querySelector(".controls");
-    var playButton = document.querySelector("#play");
-    var pauseButton = document.querySelector("#pause");
+    const controls = document.querySelector(".controls");
+    const playButton = document.querySelector("#play");
+    const pauseButton = document.querySelector("#pause");
 
-    var elapsed = document.querySelector("#elapsed");
+    const elapsed = document.querySelector("#elapsed");
 
 
-    var g = canvas.getContext("2d");
+    const g = canvas.getContext("2d");
 
     video.addEventListener("timeupdate", function () {
         elapsed.style.width = Math.ceil(video.currentTime * 320 / video.duration) + "px";
@@ -43,9 +43,9 @@ window.addEventListener("load", function () {
 
     function drawSomething(image) {
 
-        var x = Math.random() * canvas.width;
-        var y = Math.random() * canvas.height;
-        var size = Math.max((canvas.height) * Math.random(), 40);
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const size = Math.max((canvas.height) * Math.random(), 40);
         g.drawImage(image, x, y, size, size);
     }
 

@@ -3,21 +3,21 @@ window.addEventListener("load", function () {
     // See overview of <video> events and properties:
     // https://www.w3.org/2010/05/video/mediaevents.html
 
-    var video = document.querySelector("video");
-    var canvas = document.querySelector("canvas");
+    const video = document.querySelector("video");
+    const canvas = document.querySelector("canvas");
 
-    var error = document.querySelector(".error");
+    const error = document.querySelector(".error");
 
-    var targetColor = {red: 0, green: 255, blue: 0};
-    var targetColorDiv = document.querySelector(".target");
-    var targetColorText = document.querySelector(".targettext");
+    let targetColor = {red: 0, green: 255, blue: 0};
+    const targetColorDiv = document.querySelector(".target");
+    const targetColorText = document.querySelector(".targettext");
 
     updateTargetColor(targetColor);
 
 
-    var g = canvas.getContext("2d");
+    const g = canvas.getContext("2d");
 
-    var constraints = {video: true, audio: false};
+    const constraints = {video: true, audio: false};
 
     window.navigator.mediaDevices.getUserMedia(constraints)
         .then(function (stream) {
@@ -35,42 +35,42 @@ window.addEventListener("load", function () {
         g.clearRect(0, 0, canvas.width, canvas.height);
         g.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        var imageData = g.getImageData(0, 0, canvas.width, canvas.height);
+        const imageData = g.getImageData(0, 0, canvas.width, canvas.height);
 
 
-        var pixels = imageData.data;
+        const pixels = imageData.data;
 
         // pixels is an array color components: [red, green, blue, alpha, red, green, blue, alpha, ..]
         // So, let's iterate over every 4th component:
 
-        var leftMost = canvas.width;
-        var topMost = canvas.height;
-        var rightMost = 0;
-        var bottomMost = 0;
+        let leftMost = canvas.width;
+        let topMost = canvas.height;
+        let rightMost = 0;
+        let bottomMost = 0;
 
 
-        for (var i = 0; i < pixels.length; i += 4) {
+        for (let i = 0; i < pixels.length; i += 4) {
 
             // Pixel index
-            var p = i / 4;
+            const p = i / 4;
 
             // Calculate X and Y positions
-            var x = p % canvas.width;
-            var y = Math.floor(p / canvas.width);
+            const x = p % canvas.width;
+            const y = Math.floor(p / canvas.width);
 
             // Get each color value (0-255)
-            var red = pixels[i];
-            var green = pixels[i + 1];
-            var blue = pixels[i + 2];
+            const red = pixels[i];
+            const green = pixels[i + 1];
+            const blue = pixels[i + 2];
 
 
             // Calculate the difference between actual and target color in 3D vector space
-            var diff = Math.sqrt(Math.pow(targetColor.red - red, 2)
+            const diff = Math.sqrt(Math.pow(targetColor.red - red, 2)
                 + Math.pow(targetColor.green - green, 2)
                 + Math.pow(targetColor.blue - blue, 2));
 
             // TODO: Find a better threshold to give a tighter match?
-            var threshold = 70;
+            const threshold = 70;
 
             if (diff < threshold) {
                 // TODO: Replace the pixel values to create a different color
@@ -99,14 +99,14 @@ window.addEventListener("load", function () {
     video.addEventListener("click", function (e) {
 
 
-        var x = e.layerX;
-        var y = e.layerY;
+        const x = e.layerX;
+        const y = e.layerY;
 
         g.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        var imageData = g.getImageData(x, y, 1, 1);
+        const imageData = g.getImageData(x, y, 1, 1);
 
-        var pixels = imageData.data;
+        const pixels = imageData.data;
 
         updateTargetColor({red: pixels[0], green: pixels[1], blue: pixels[2]});
 
@@ -114,7 +114,7 @@ window.addEventListener("load", function () {
 
     function updateTargetColor(col) {
         targetColor = col;
-        var backgroundColor = "rgba(" + col.red + ", " + col.green + ", " + col.blue + ", 255)";
+        const backgroundColor = "rgba(" + col.red + ", " + col.green + ", " + col.blue + ", 255)";
         targetColorDiv.style.backgroundColor = backgroundColor;
         targetColorText.textContent = backgroundColor;
     }

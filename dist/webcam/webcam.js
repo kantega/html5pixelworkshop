@@ -3,22 +3,22 @@ window.addEventListener("load", function () {
     // See overview of <video> events and properties:
     // https://www.w3.org/2010/05/video/mediaevents.html
 
-    var video = document.querySelector("video");
-    var canvas = document.querySelector("canvas");
+    const video = document.querySelector("video");
+    const canvas = document.querySelector("canvas");
 
-    var error = document.querySelector(".error");
+    const error = document.querySelector(".error");
 
-    var snapshots = document.querySelector("#snapshots")
+    const snapshots = document.querySelector("#snapshots")
 
-    var stick_down = new Image();
+    const stick_down = new Image();
     stick_down.src = "stick.png";
 
-    var stick_up = new Image();
+    const stick_up = new Image();
     stick_up.src = "stick_up.png";
 
-    var stick = stick_down;
+    let stick = stick_down;
 
-    var g = canvas.getContext("2d");
+    const g = canvas.getContext("2d");
 
 
     // See https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
@@ -83,7 +83,7 @@ window.addEventListener("load", function () {
         g.clearRect(0, 0, canvas.width, canvas.height);
         g.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        var image = document.createElement("img");
+        const image = document.createElement("img");
         image.src = canvas.toDataURL();
         image.width = canvas.width / 3;
         image.height = canvas.height / 3;
