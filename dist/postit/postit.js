@@ -95,19 +95,18 @@ window.addEventListener("load", function () {
 
     window.requestAnimationFrame(animationLoop);
 
+    function getCursorPosition(canvasElement, event) {
+        var rect = canvasElement.getBoundingClientRect();
+        var xPos = event.clientX - rect.left;
+        var yPos = event.clientY - rect.top;
+        return {x: xPos, y: yPos};
+    }
 
     video.addEventListener("click", function (e) {
-
-
-        const x = e.layerX;
-        const y = e.layerY;
-
+        const pos = getCursorPosition(video, e);
         g.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-        const imageData = g.getImageData(x, y, 1, 1);
-
+        const imageData = g.getImageData(pos.x, pos.y, 1, 1);
         const pixels = imageData.data;
-
         updateTargetColor({red: pixels[0], green: pixels[1], blue: pixels[2]});
 
     });
